@@ -1,0 +1,82 @@
+<!-- -----------------------------------------------
+  * ATTEMPT: 2
+  * DATE: 25/09/2018
+  * TIME: 1 hr
+  ! STATUS: FAIL
+  ? NOTES:
+  ?   - transfrom ของ keyframe กับ centered ทับกัน
+  ?   - ขาด gradient, shape
+------------------------------------------------ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #16262E;
+      overflow: hidden;
+      /* height: 100vh;
+      position: relative;
+      perspective: 2000px; */
+    }
+
+    .folding {
+      display: flex;
+      /* transform-style: preserve-3d; */
+    }
+
+    .folding--animate {
+      animation-name: fold;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+      transform-origin: left;
+    }
+
+    .folding--centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    .folding__piece {
+      width: 10vmin;
+      height: 10vmin;
+      margin: 1px;
+      background-color: aqua;
+    }
+  </style>
+
+  <style>
+    @keyframes fold {
+      from { transform: scaleX(1) translate(-50%, -50%); }
+      to { transform: scaleX(0.75) translate(-50%, -50%); }
+    }
+  </style>
+
+  <title>Folding</title>
+</head>
+<body>
+  <div class="folding folding--animate folding--centered">
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+    <div class="folding__piece"></div>
+  </div>
+</body>
+</html>
