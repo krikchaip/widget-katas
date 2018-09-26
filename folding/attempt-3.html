@@ -1,0 +1,84 @@
+<!-- -----------------------------------------------
+  * ATTEMPT: 3
+  * DATE: 26/09/2018
+  * TIME: 30 mins
+  ! STATUS: FAIL
+  ? NOTES:
+  ?   - ขาด trapezoid shape ระหว่าง odd, even item
+  ?   - ขาด dimension ของ folder__item
+------------------------------------------------ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      background-color: #16262E;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .folder {
+      --folder__item--width: 40px;
+      --folder__item--height: 50px;
+      display: flex;
+    }
+
+    .folder--folding {
+      animation-name: folding;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+    }
+
+    .folder__item {
+      width: var(--folder__item--width);
+      height: var(--folder__item--height);
+      margin-left: 1px;
+    }
+
+    .folder__item:nth-child(odd) {
+      background-image: linear-gradient(to right, rgba(60, 122, 137, 0.7), #3C7A89);
+      clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%);
+    }
+
+    .folder__item:nth-child(even) {
+      background-image: linear-gradient(to left, rgba(60, 122, 137, 0.7), #3C7A89);
+      clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
+    }
+  </style>
+
+  <style>
+    @keyframes folding {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0.7); }
+    }
+  </style>
+
+  <title>Folding</title>
+</head>
+<body>
+  <div class="folder folder--folding">
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+  </div>
+</body>
+</html>
