@@ -1,0 +1,92 @@
+<!-- -----------------------------------------------
+  * ATTEMPT: 4
+  * DATE: 4/10/2018
+  * TIME: 30 mins
+  ! STATUS: FAIL
+  ? NOTES:
+  ?   - just try using pseudo elements (and fail 😕)
+  ?   - tried to draw trapezoids with border-radius
+  ?     but it seems to had a problem around linear-gradient
+------------------------------------------------ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #16262E;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .folder {
+      font-size: 0;
+      animation-name: folding;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+      animation-duration: 5s;
+      animation-timing-function: ease-in-out;
+    }
+
+    .folder__item {
+      margin-right: 3px;
+      display: inline-block;
+      /* --folder__item--width: 50px;
+      --folder__item--height: 100px; */
+    }
+
+    .folder__item::before {
+      content: '';
+      display: inline-block;
+      /* width: var(--folder__item--width);
+      height: var(--folder__item--height); */
+      height: 100px;
+      width: 0;
+      border-right: 50px solid;
+      background-image: linear-gradient(to left, #3C7A89, rgba(60, 122, 137, 0.7));
+      margin-right: 2px;
+    }
+
+    .folder__item::after {
+      content: '';
+      display: inline-block;
+      width: var(--folder__item--width);
+      height: var(--folder__item--height);
+      background-image: linear-gradient(to right, #3C7A89, rgba(60, 122, 137, 0.7));
+    }
+  </style>
+
+  <style>
+    @keyframes folding {
+      from {
+        transform: scaleX(1);
+      }
+
+      to {
+        transform: scaleX(0.7);
+      }
+    }
+  </style>
+
+  <title>Folding</title>
+</head>
+<body>
+  <div class="folder">
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+    <div class="folder__item"></div>
+  </div>
+</body>
+</html>
