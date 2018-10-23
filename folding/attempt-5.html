@@ -1,0 +1,81 @@
+<!-- -----------------------------------------------
+  * ATTEMPT: 5
+  * DATE: 23/10/2018
+  * TIME: 01:10:10
+  ? NOTES:
+  ?   - try using pseudo elements on folding__item
+  ?   - try using 3d transforms(perspective, etc.)
+  ?     to create trapezoids with gradient
+------------------------------------------------ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    @keyframes fold {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0.75); }
+    }
+  </style>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #16262E;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .folding {
+      display: flex;
+      animation: fold 5s ease-in-out infinite alternate;
+    }
+
+    .folding__item {
+      --folding-dimension: 50px;
+      --folding-rotate: 15deg;
+      display: flex;
+      perspective: 200px;
+      margin-right: -3px;
+    }
+
+    .folding__item::before {
+      width: var(--folding-dimension);
+      height: var(--folding-dimension);
+      content: '';
+      display: block;
+      background-image: linear-gradient(to left, #3C7A89, rgba(60, 122, 137, 0.7));
+      transform: rotateY(calc(-1 * var(--folding-rotate)));
+    }
+
+    .folding__item::after {
+      width: var(--folding-dimension);
+      height: var(--folding-dimension);
+      content: '';
+      display: block;
+      background-image: linear-gradient(to right, #3C7A89, rgba(60, 122, 137, 0.7));
+      transform: rotateY(var(--folding-rotate));
+    }
+  </style>
+
+  <title>Folding</title>
+</head>
+<body>
+  <div class="folding">
+    <div class="folding__item"></div>
+    <div class="folding__item"></div>
+    <div class="folding__item"></div>
+    <div class="folding__item"></div>
+  </div>
+</body>
+</html>
